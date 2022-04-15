@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "name": "Soccer Practice",
+    "description": "Practice your soccer skills",
+    "date": "2022/04/15",
+    "time": "20:00"
+  },
+  {
+    "id": "2",
+    "name": "Lunch",
+    "description": "Lunch with the team",
+    "date": "2022/04/15",
+    "time": "12:00"
+  }
+]
