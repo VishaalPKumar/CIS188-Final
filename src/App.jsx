@@ -45,14 +45,18 @@ const App = () => {
   }
 
   function onChange(date) {
-    const fData = data.filter((item) => {
+    setDate(date);
+    dateRef.current.valueAsDate = date;
+  }
+
+  useEffect(() => {
+     const fData = data.filter((item) => {
       const checkDate = new Date(item.date);
       return checkDate.toDateString() === date.toDateString();
     });
-    setDate(date);
     setFilteredData(fData);
-    dateRef.current.valueAsDate = date;
-  }
+  }, [date, data, setFilteredData]);
+
   useEffect(() => {
     //Write to GitHub file here
   }, [data]);
