@@ -25,13 +25,15 @@ const App = () => {
     console.log("description:", descriptionRef.current.value);
     console.log("date:", dateRef.current.value);
     console.log("time:", timeRef.current.value);
+    const date = dateRef.current.value.replaceAll("-", "/");
     // create event object
     const eventObj = {
       name: nameRef.current.value,
       description: descriptionRef.current.value,
-      date: dateRef.current.value,
+      date: date,
       time: timeRef.current.value,
     };
+    console.log(eventObj);
     // add event to data
     setData([...data, eventObj]);
 
@@ -100,6 +102,8 @@ const App = () => {
               <span className="bold">Description:</span> {item.description}
               <br />
               <span className="bold">Date:</span> {item.date}
+              <br />
+              <span className="bold">Time:</span> {item.time}
             </li>
           ))}
         </ul>
