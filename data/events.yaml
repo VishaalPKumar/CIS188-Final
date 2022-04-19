@@ -1,6 +1,5 @@
 events:
-  events:
-  - date: wow
-    description: wow
-    name: wow
-    time: wow
+- date: wow
+  description: wow
+  name: wow
+  time: wow
