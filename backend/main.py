@@ -1,4 +1,3 @@
-import base64
 from typing import List
 
 from fastapi import FastAPI
@@ -9,11 +8,20 @@ import base64
 
 from pydantic import BaseModel
 from starlette.responses import Response
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
 EVENTS_URL = "https://api.github.com/repos/VishaalPKumar/CIS188-Project/contents/data/events.yaml"
 TOKEN = "***REMOVED***"
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 def get_metadata():
