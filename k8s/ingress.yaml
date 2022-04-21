@@ -11,6 +11,13 @@ spec:
             pathType: Prefix
             backend:
               service:
+                name: web
+                port:
+                  number: 3000
+          - path: "/api"
+            pathType: Prefix
+            backend:
+              service:
                 name: fastapi
                 port:
                   number: 8000

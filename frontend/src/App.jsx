@@ -58,7 +58,7 @@ const App = () => {
   }, [date, data, setFilteredData]);
 
   useEffect(() => {
-    fetch("http://calendar.cis188.org/events", {
+    fetch("http://calendar.cis188.org/api/events", {
       headers: { "Access-Control-Allow-Origin": "*" },
     })
       .then((res) => res.json())
@@ -66,7 +66,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://calendar.cis188.org/updateEvents", {
+    fetch("http://calendar.cis188.org/api/updateEvents", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       "Access-Control-Allow-Origin": "*",
