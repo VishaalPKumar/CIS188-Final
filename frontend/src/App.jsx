@@ -58,7 +58,7 @@ const App = () => {
   }, [date, data, setFilteredData]);
 
   useEffect(() => {
-    fetch("http://fastapi:8000/events", {
+    fetch("http://calendar.cis188.org/events", {
       headers: { "Access-Control-Allow-Origin": "*" },
     })
       .then((res) => res.json())
@@ -66,7 +66,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
-    fetch("http://fastapi:8000/updateEvents", {
+    fetch("http://calendar.cis188.org/updateEvents", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       "Access-Control-Allow-Origin": "*",
