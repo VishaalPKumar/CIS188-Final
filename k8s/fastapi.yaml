@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fastapi
+  labels:
+    app: fastapi
+spec:
+  type: ClusterIP
+  selector:
+    app: fastapi
+  ports:
+    - port: 8000
+      targetPort: 8000
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: fastapi
+  labels:
+    app: fastapi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: fastapi
+  template:
+    metadata:
+      labels:
+        app: fastapi
+    spec:
+      containers:
+        - name: fastapibackend
+          image: backend:v1
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 8000
