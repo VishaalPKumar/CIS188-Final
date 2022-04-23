@@ -18,5 +18,7 @@ RUN npm install --silent
 COPY ./src ./src
 COPY ./public ./public
 
+EXPOSE 3000
+
 # start app
 CMD ["npm", "start"]

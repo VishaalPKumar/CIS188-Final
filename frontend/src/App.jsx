@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import "react-calendar/dist/Calendar.css";
 import "./index.css";
 import Data from "./data.json";
+import axios from "axios";
 
 const App = () => {
   const [date, setDate] = useState(new Date());
@@ -58,20 +59,14 @@ const App = () => {
   }, [date, data, setFilteredData]);
 
   useEffect(() => {
-    fetch("http://calendar.cis188.org/api/events", {
-      headers: { "Access-Control-Allow-Origin": "*" },
-    })
-      .then((res) => res.json())
+    axios
+      .get("/api/events")
+      .then((res) => console.log(res))
       .then((res) => setData(res.events));
   }, []);
 
   useEffect(() => {
-    fetch("http://calendar.cis188.org/api/updateEvents", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      "Access-Control-Allow-Origin": "*",
-      body: JSON.stringify({ events: data }),
-    }).catch(alert);
+    axios.post("/api/updateEvents", { events: data }).catch(alert);
   }, [data]);
 
   return (
