@@ -59,6 +59,9 @@ jobs:
       - name: configure kube credentials on AWS
         run: aws eks --region us-east-1 update-kubeconfig --name cis188 --role-arn arn:aws:iam::474844133309:role/dlike --alias cis188
 
+      - name: Set tag env variable
+        run: export TAG=${{ github.sha }}
+
       - name: Set namespace
         run: kubectl config set-context --current --namespace=dlike
 
