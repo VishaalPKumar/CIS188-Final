@@ -63,5 +63,5 @@ jobs:
         run: kubectl config set-context --current --namespace=dlike
 
       - name: Run kubectl apply with substituted vars
-        run:  export TAG=${{ github.sha }}; cat ./k8s/*.yaml | envsubst - | kubectl apply -f -
+        run:  export TAG=${{ github.sha }}; cat ./k8s/react.yaml | envsubst > ./k8s/react.yaml; cat ./k8s/fastapi.yaml | envsubst > ./k8s/fastapi.yaml; kubectl apply -f ./k8s
 
