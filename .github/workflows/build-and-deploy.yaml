@@ -62,9 +62,6 @@ jobs:
       - name: Set namespace
         run: kubectl config set-context --current --namespace=dlike
 
-      - name: Set tag env variable
-        run: export TAG=${{ github.sha }}
-
-      - name: Run kubectl apply with substituted env vars
-        run:  cat ./k8s/*.yaml | envsubst - | kubectl apply -f -
+      - name: Run kubectl apply with substituted vars
+        run:  export TAG=${{ github.sha }}; cat ./k8s/*.yaml | envsubst - | kubectl apply -f -
 
