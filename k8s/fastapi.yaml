@@ -32,6 +32,6 @@ spec:
       containers:
         - name: fastapibackend
           image: ghcr.io/dlike230/cis188-project/final-project-backend:${TAG}
-          imagePullPolicy: Always
+          imagePullPolicy: Never
           ports:
             - containerPort: 8000
