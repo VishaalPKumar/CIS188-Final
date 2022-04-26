@@ -66,4 +66,5 @@ jobs:
         run: export TAG=${{ github.sha }}
 
       - name: Run kubectl apply with substituted env vars
-        run:  for f in ./k8s/*.yaml; do envsubst < $f | kubectl apply -f -; done
+        run:  cat ./k8s/*.yaml | envsubst - | kubectl apply -f -
+
