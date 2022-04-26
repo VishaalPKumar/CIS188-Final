@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: web-calendar
-          image: ghcr.io/dlike230/cis188-project/final-project-frontend:$TAG
+          image: ghcr.io/dlike230/cis188-project/final-project-frontend:${TAG}
           imagePullPolicy: Never
           ports:
             - containerPort: 3000
