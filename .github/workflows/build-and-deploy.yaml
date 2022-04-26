@@ -19,14 +19,14 @@ jobs:
       - name: Log into docker
         run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
 
-      - name: Build and push web
+      - name: Build and push frontend
         uses: docker/build-push-action@v2
         with:
           context: "./frontend"
           push: ${{ github.ref == 'refs/heads/master' }}
           tags: ghcr.io/vishaalpkumar/cis188-project/final-project-frontend:${{ github.sha }}
 
-      - name: Build and push cronjob
+      - name: Build and push backend
         uses: docker/build-push-action@v2
         with:
           context: "./backend"
@@ -56,14 +56,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-1
 
-      - name: Get Kubeconfig
-        run: aws eks --region us-east-1 update-kubeconfig --name cis188 --role-arn arn:aws:iam::474844133309:role/dlike --alias cis188
-
       - name: Set namespace
         run: kubectl config set-context --current --namespace=dlike
 
-      - name: Add remote helm repo
-        run: helm repo add cis188 https://helm.cis188.org
-
-      - name: Run helm install
-        run: helm upgrade --install bender-catalog cis188/bender-catalog  --set cronjob.tag=${{ github.sha }} --set web.tag=${{ github.sha }} -f installation-values.yaml%
+      - name: Run kubectl apply
+        run: kubectl apply -f ./k8s
