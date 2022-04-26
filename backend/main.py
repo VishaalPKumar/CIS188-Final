@@ -4,6 +4,7 @@ from fastapi import FastAPI
 import requests
 import json
 import yaml
+import os
 import base64
 
 from pydantic import BaseModel
@@ -12,8 +13,8 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-EVENTS_URL = "https://api.github.com/repos/VishaalPKumar/CIS188-Project/contents/data/events.yaml"
-TOKEN = "***REMOVED***"
+EVENTS_URL = "https://api.github.com/repos/dlike230/CIS188-Project/contents/data/events.yaml"
+TOKEN = os.env.get("GITHUB_TOKEN")
 
 
 app.add_middleware(

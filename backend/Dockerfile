@@ -10,6 +10,8 @@ RUN pip install "poetry==$POETRY_VERSION"
 COPY pyproject.toml /app/
 COPY poetry.lock /app/
 
+ENV GITHUB_TOKEN=${GITHUB_TOKEN}
+
 RUN poetry install --no-dev
 
 COPY . /app/

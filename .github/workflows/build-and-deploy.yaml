@@ -32,6 +32,8 @@ jobs:
           context: "./backend"
           push: ${{ github.ref == 'refs/heads/master' }}
           tags: ghcr.io/dlike230/cis188-project/final-project-backend:${{ github.sha }}
+          secrets: |
+            "github_token=${{ secrets.GH_TOKEN }}"
 
   deploy:
     name: Deploy latest version of code
@@ -44,13 +46,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Log into docker
-        run: docker login -u ${{ github.actor }} -p ${{ secrets.GITHUB_TOKEN }} ghcr.io
-
       - name: Set up AWS configuration
-        run: >
-          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }};
-          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        run: |
+             aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+             aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
