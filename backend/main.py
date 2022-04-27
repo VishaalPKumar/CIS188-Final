@@ -13,8 +13,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-EVENTS_URL = "https://api.github.com/repos/dlike230/CIS188-Project/contents/data/events.yaml"
-TOKEN = os.env.get("GITHUB_TOKEN")
+EVENTS_URL = (
+    "https://api.github.com/repos/dlike230/CIS188-Project/contents/data/events.yaml"
+)
+TOKEN = os.getenv("GITHUB_TOKEN")
 
 
 app.add_middleware(

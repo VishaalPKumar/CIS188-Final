@@ -1,5 +1,4 @@
 #!/bin/bash
-kind create cluster --name cis188
 kubectl config use-context kind-cis188
 docker build backend -t backend:v1
 docker build frontend -t frontend:v1

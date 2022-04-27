@@ -2,6 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: api-ingress
+  annotations:
+    traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
 spec:
   rules:
     - host: "dlike.cis188.org"
@@ -14,7 +16,10 @@ spec:
                 name: web-app
                 port:
                   number: 3000
-          - path: "/"
+    - host: "dlike.cis188.org"
+      http:
+        paths:
+          - path: "/api"
             pathType: Prefix
             backend:
               service:

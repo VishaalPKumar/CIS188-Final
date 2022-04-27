@@ -3,13 +3,11 @@ apiVersion: v1
 metadata:
   name: web-app
 spec:
-  type: NodePort
   selector:
     app: web-app
   ports:
     - port: 3000
-      targetPort: 3000
-      nodePort: 31000
+      targetPort: 80
 
 ---
 kind: Deployment
@@ -26,9 +24,7 @@ spec:
         app: web-app
     spec:
       containers:
-        - name: web-app-calendar
+        - name: web-app
           image: ghcr.io/dlike230/cis188-project/final-project-frontend-public:${TAG}
-          imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 3000
-      restartPolicy: Always
+            - containerPort: 80

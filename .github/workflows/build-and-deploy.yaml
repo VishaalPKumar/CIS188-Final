@@ -5,7 +5,6 @@ on: push
 
 jobs:
   build:
-
     # Name the Job
     name: Build and publish docker image
     # Set the type of machine to run on
@@ -48,8 +47,8 @@ jobs:
 
       - name: Set up AWS configuration
         run: |
-             aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
-             aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws configure set aws_access_key_id ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws configure set aws_secret_access_key ${{ secrets.AWS_SECRET_ACCESS_KEY }}
 
       - name: Configure AWS Credentials
         uses: aws-actions/configure-aws-credentials@v1
@@ -59,17 +58,16 @@ jobs:
           aws-region: us-east-1
 
       - name: configure kube credentials on AWS
-        run: aws eks --region us-east-1 update-kubeconfig --name cis188 --role-arn arn:aws:iam::474844133309:role/dlike --alias cis188
+        run: aws eks --region us-east-1 update-kubeconfig --name cis188 --role-arn arn:aws:iam::474844133309:role/vishaalk --alias cis188
 
       - name: Set namespace
-        run: kubectl config set-context --current --namespace=dlike
+        run: kubectl config set-context --current --namespace=vishaalk
 
       - name: Run kubectl apply with substituted vars
-        run: |  
-              export TAG=${{ github.sha }}
-              cat ./k8s/react.yaml | envsubst > ./k8s/react2.yaml
-              rm ./k8s/react.yaml
-              cat ./k8s/fastapi.yaml | envsubst > ./k8s/fastapi2.yaml
-              rm ./k8s/fastapi.yaml
-              kubectl apply -f ./k8s/
-
+        run: |
+          export TAG=${{ github.sha }}
+          cat ./k8s/react.yaml | envsubst > ./k8s/react2.yaml
+          rm ./k8s/react.yaml
+          cat ./k8s/fastapi.yaml | envsubst > ./k8s/fastapi2.yaml
+          rm ./k8s/fastapi.yaml
+          kubectl apply -f ./k8s/
