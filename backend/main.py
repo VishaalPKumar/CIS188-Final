@@ -36,7 +36,7 @@ def get_metadata():
     return json.loads(metadata_response)
 
 
-@app.get("/api/events")
+@app.get("/events")
 def get_events():
     metadata = get_metadata()
     download_url = metadata["download_url"]
@@ -55,7 +55,7 @@ class Events(BaseModel):
     events: List[Event]
 
 
-@app.post("/api/updateEvents")
+@app.post("/updateEvents")
 def update_events(events: Events):
     new_data = events.dict()
     new_yaml = yaml.safe_dump(new_data)
