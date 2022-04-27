@@ -61,7 +61,7 @@ jobs:
         run: aws eks --region us-east-1 update-kubeconfig --name cis188 --role-arn arn:aws:iam::474844133309:role/dlike --alias cis188
 
       - name: Set namespace
-        run: kubectl config set-context --current --namespace=dlike230
+        run: kubectl config set-context --current --namespace=dlike
 
       - name: Run kubectl apply with substituted vars
         run: |
