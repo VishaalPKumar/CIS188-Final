@@ -14,7 +14,7 @@ spec:
                 name: web-app
                 port:
                   number: 3000
-          - path: "/"
+          - path: "/calendar"
             pathType: Prefix
             backend:
               service:
