@@ -3,14 +3,11 @@ apiVersion: v1
 metadata:
   name: web-app
 spec:
-  type: NodePort
   selector:
     app: web-app
   ports:
-    - port: 80
+    - port: 3000
       targetPort: 80
-      protocol: TCP
-      nodePort: 31000
 
 ---
 kind: Deployment
@@ -29,7 +26,9 @@ spec:
       containers:
         - name: web-app-calendar
           image: ghcr.io/vishaalpkumar/cis188-project/final-project-frontend-public:${TAG}
-          imagePullPolicy: Never
           ports:
             - containerPort: 80
-      restartPolicy: Always
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"

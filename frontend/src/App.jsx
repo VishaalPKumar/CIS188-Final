@@ -60,13 +60,13 @@ const App = () => {
 
   useEffect(() => {
     axios
-      .get("/calendar/api/events")
+      .get("/api/events")
       .then((res) => console.log(res))
       .then((res) => setData(res.events));
   }, []);
 
   useEffect(() => {
-    axios.post("/calendar/api/updateEvents", { events: data }).catch(alert);
+    axios.post("/api/updateEvents", { events: data }).catch(alert);
   }, [data]);
 
   return (

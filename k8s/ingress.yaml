@@ -2,6 +2,8 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: api-ingress
+  annotations:
+    traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
 spec:
   rules:
     - host: "vishaalk.cis188.org"
@@ -13,14 +15,14 @@ spec:
               service:
                 name: web-app
                 port:
-                  number: 80
-          - path: "/calendar"
+                  number: 3000
+          - path: "/api"
             pathType: Prefix
             backend:
               service:
                 name: fastapi
                 port:
-                  number: 80
+                  number: 8000
   tls:
     - hosts:
         - "vishaalk.cis188.org"

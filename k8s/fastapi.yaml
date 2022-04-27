@@ -9,8 +9,8 @@ spec:
   selector:
     app: fastapi
   ports:
-    - port: 80
-      targetPort: 80
+    - port: 8000
+      targetPort: 8000
 
 ---
 apiVersion: apps/v1
@@ -20,7 +20,6 @@ metadata:
   labels:
     app: fastapi
 spec:
-  replicas: 1
   selector:
     matchLabels:
       app: fastapi
@@ -32,6 +31,9 @@ spec:
       containers:
         - name: fastapibackend
           image: ghcr.io/vishaalpkumar/cis188-project/final-project-backend-public:${TAG}
-          imagePullPolicy: Never
           ports:
             - containerPort: 8000
+          resources:
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
