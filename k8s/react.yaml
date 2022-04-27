@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
         - name: web-app-calendar
-          image: ghcr.io/VishaalPKumar/cis188-project/final-project-frontend-public:${TAG}
+          image: ghcr.io/vishaalpkumar/cis188-project/final-project-frontend-public:${TAG}
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 3000

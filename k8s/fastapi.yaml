@@ -31,7 +31,7 @@ spec:
     spec:
       containers:
         - name: fastapibackend
-          image: ghcr.io/VishaalPKumar/cis188-project/final-project-backend-public:${TAG}
+          image: ghcr.io/vishaalpkumar/cis188-project/final-project-backend-public:${TAG}
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 8000
