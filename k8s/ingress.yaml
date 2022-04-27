@@ -16,6 +16,9 @@ spec:
                 name: web-app
                 port:
                   number: 3000
+    - host: "vishaalk.cis188.org"
+      http:
+        paths:
           - path: "/api"
             pathType: Prefix
             backend:
