@@ -28,7 +28,3 @@ spec:
           image: ghcr.io/vishaalpkumar/cis188-project/final-project-frontend-public:${TAG}
           ports:
             - containerPort: 80
-          resources:
-            limits:
-              memory: "128Mi"
-              cpu: "500m"
