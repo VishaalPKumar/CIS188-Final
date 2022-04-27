@@ -32,7 +32,7 @@ jobs:
           push: ${{ github.ref == 'refs/heads/master' }}
           tags: ghcr.io/dlike230/cis188-project/final-project-backend-public:${{ github.sha }}
           secrets: |
-            "github_token=${{ secrets.GH_TOKEN }}"
+            "GITHUB_TOKEN=${{ secrets.GH_TOKEN }}"
 
   deploy:
     name: Deploy latest version of code

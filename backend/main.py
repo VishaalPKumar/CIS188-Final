@@ -17,7 +17,7 @@ EVENTS_URL = (
     "https://api.github.com/repos/dlike230/CIS188-Project/contents/data/events.yaml"
 )
 TOKEN = os.getenv("GITHUB_TOKEN")
-
+print(TOKEN)
 
 app.add_middleware(
     CORSMiddleware,
@@ -28,21 +28,28 @@ app.add_middleware(
 )
 
 
+class MetadataFetchException(Exception):
+    def __init__(self, response):
+        self.response = response
+
+
 def get_metadata():
     metadata_response = requests.get(
         EVENTS_URL, headers={"Authorization": f"token {TOKEN}"}
     )
 
     if metadata_response.status_code != 200:
-        print(TOKEN)
-        return Response(content=metadata_response.content, status_code=metadata_response.status_code)
+        raise MetadataFetchException(metadata_response)
 
     return json.loads(metadata_response.content)
 
 
 @app.get("/events")
 def get_events():
-    metadata = get_metadata()
+    try:
+        metadata = get_metadata()
+    except MetadataFetchException as e:
+        return Response(content=e.response.content, status_code=e.response.status_code)
     download_url = metadata["download_url"]
     return yaml.safe_load(requests.get(download_url).content)
 
@@ -62,7 +69,11 @@ class Events(BaseModel):
 def update_events(events: Events):
     new_data = events.dict()
     new_yaml = yaml.safe_dump(new_data)
-    metadata = get_metadata()
+
+    try:
+        metadata = get_metadata()
+    except MetadataFetchException as e:
+        return Response(content=e.response.content, status_code=e.response.status_code)
 
     data = {
         "message": "Update events",
