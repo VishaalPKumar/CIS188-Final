@@ -28,7 +28,6 @@
       "react-app/jest"
     ]
   },
-  "proxy": "http://fastapi:8000",
   "browserslist": {
     "production": [
       ">0.2%",

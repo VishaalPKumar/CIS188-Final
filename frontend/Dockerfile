@@ -21,4 +21,7 @@ COPY ./src ./src
 COPY ./public ./public
 
 # start app
-CMD ["npx", "serve", "-s", "build"]
+RUN npm install -g serve
+RUN npm run build
+CMD ["serve", "-s", "build"]
+
