@@ -21,4 +21,4 @@ COPY ./src ./src
 COPY ./public ./public
 
 # start app
-CMD ["npm", "start"]
+CMD ["npx", "serve", "-s", "build"]
