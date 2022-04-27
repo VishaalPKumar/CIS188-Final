@@ -31,8 +31,8 @@ jobs:
           context: "./backend"
           push: ${{ github.ref == 'refs/heads/master' }}
           tags: ghcr.io/dlike230/cis188-project/final-project-backend-public:${{ github.sha }}
-          secrets: |
-            "GITHUB_TOKEN=${{ secrets.GH_TOKEN }}"
+          build-args: |
+            GITHUB_TOKEN=${{ secrets.GH_TOKEN }}
 
   deploy:
     name: Deploy latest version of code

@@ -17,7 +17,6 @@ EVENTS_URL = (
     "https://api.github.com/repos/dlike230/CIS188-Project/contents/data/events.yaml"
 )
 TOKEN = os.getenv("GITHUB_TOKEN")
-print(TOKEN)
 
 app.add_middleware(
     CORSMiddleware,
