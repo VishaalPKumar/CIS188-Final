@@ -2,6 +2,8 @@ FROM python:3.8-buster
 
 WORKDIR /app/
 
+EXPOSE 80
+
 ENV POETRY_VERSION=1.0.8
 
 #System dependencies
