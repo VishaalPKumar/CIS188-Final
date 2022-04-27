@@ -25,6 +25,6 @@ spec:
     spec:
       containers:
         - name: web-app
-          image: ghcr.io/vishaalpkumar/cis188-project/final-project-frontend-public:${TAG}
+          image: ghcr.io/dlike230/cis188-project/final-project-frontend-public:${TAG}
           ports:
             - containerPort: 80

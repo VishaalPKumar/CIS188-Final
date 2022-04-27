@@ -23,14 +23,14 @@ jobs:
         with:
           context: "./frontend"
           push: ${{ github.ref == 'refs/heads/master' }}
-          tags: ghcr.io/vishaalpkumar/cis188-project/final-project-frontend-public:${{ github.sha }}
+          tags: ghcr.io/dlike230/cis188-project/final-project-frontend-public:${{ github.sha }}
 
       - name: Build and push backend
         uses: docker/build-push-action@v2
         with:
           context: "./backend"
           push: ${{ github.ref == 'refs/heads/master' }}
-          tags: ghcr.io/vishaalpkumar/cis188-project/final-project-backend-public:${{ github.sha }}
+          tags: ghcr.io/dlike230/cis188-project/final-project-backend-public:${{ github.sha }}
           secrets: |
             "github_token=${{ secrets.GH_TOKEN }}"
 
