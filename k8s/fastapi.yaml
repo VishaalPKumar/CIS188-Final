@@ -9,8 +9,8 @@ spec:
   selector:
     app: fastapi
   ports:
-    - port: 8000
-      targetPort: 8000
+    - port: 80
+      targetPort: 80
 
 ---
 apiVersion: apps/v1
@@ -32,6 +32,6 @@ spec:
       containers:
         - name: fastapibackend
           image: ghcr.io/vishaalpkumar/cis188-project/final-project-backend-public:${TAG}
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
             - containerPort: 8000

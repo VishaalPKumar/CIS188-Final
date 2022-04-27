@@ -7,8 +7,9 @@ spec:
   selector:
     app: web-app
   ports:
-    - port: 3000
-      targetPort: 3000
+    - port: 80
+      targetPort: 80
+      protocol: TCP
       nodePort: 31000
 
 ---
@@ -17,6 +18,7 @@ apiVersion: apps/v1
 metadata:
   name: web-app
 spec:
+  replicas: 2
   selector:
     matchLabels:
       app: web-app
@@ -28,7 +30,7 @@ spec:
       containers:
         - name: web-app-calendar
           image: ghcr.io/vishaalpkumar/cis188-project/final-project-frontend-public:${TAG}
-          imagePullPolicy: IfNotPresent
+          imagePullPolicy: Always
           ports:
-            - containerPort: 3000
+            - containerPort: 80
       restartPolicy: Always

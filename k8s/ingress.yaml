@@ -13,14 +13,14 @@ spec:
               service:
                 name: web-app
                 port:
-                  number: 3000
+                  number: 80
           - path: "/calendar"
             pathType: Prefix
             backend:
               service:
                 name: fastapi
                 port:
-                  number: 8000
+                  number: 80
   tls:
     - hosts:
         - "vishaalk.cis188.org"
