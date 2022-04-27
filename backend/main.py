@@ -31,16 +31,19 @@ app.add_middleware(
 def get_metadata():
     metadata_response = requests.get(
         EVENTS_URL, headers={"Authorization": f"token {TOKEN}"}
-    ).content
+    )
 
-    return json.loads(metadata_response)
+    if metadata_response.status_code != 200:
+        print(TOKEN)
+        return Response(content=metadata_response.content, status_code=metadata_response.status_code)
+
+    return json.loads(metadata_response.content)
 
 
 @app.get("/events")
 def get_events():
     metadata = get_metadata()
     download_url = metadata["download_url"]
-
     return yaml.safe_load(requests.get(download_url).content)
 
 
