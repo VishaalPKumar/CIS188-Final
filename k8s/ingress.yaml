@@ -9,16 +9,13 @@ spec:
     - host: "dlike.cis188.org"
       http:
         paths:
-          - path: "/"
+          - path: "/frontend"
             pathType: Prefix
             backend:
               service:
                 name: web-app
                 port:
                   number: 3000
-    - host: "dlike.cis188.org"
-      http:
-        paths:
           - path: "/api"
             pathType: Prefix
             backend:
