@@ -24,7 +24,7 @@ spec:
         app: web-app
     spec:
       containers:
-        - name: web-app-calendar
+        - name: web-app
           image: ghcr.io/vishaalpkumar/cis188-project/final-project-frontend-public:${TAG}
           ports:
             - containerPort: 80
