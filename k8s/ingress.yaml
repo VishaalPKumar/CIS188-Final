@@ -4,7 +4,7 @@ metadata:
   name: api-ingress
 spec:
   rules:
-    - host: "dlike.cis188.org"
+    - host: "vishaalk.cis188.org"
       http:
         paths:
           - path: "/"
@@ -23,5 +23,5 @@ spec:
                   number: 8000
   tls:
     - hosts:
-        - "dlike.cis188.org"
-      secretName: dlike-cis188-org-tls
+        - "vishaalk.cis188.org"
+      secretName: vishaalk-cis188-org-tls
