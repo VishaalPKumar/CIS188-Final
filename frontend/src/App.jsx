@@ -62,7 +62,15 @@ const App = () => {
     axios
       .get("/api/events")
       .then((res) => console.log(res))
-      .then((res) => setData(res.events));
+      .then((res) => {
+        setData(res.events);
+        const fData = data.filter((item) => {
+          const checkDate = new Date(item.date);
+          return checkDate.toDateString() === date.toDateString();
+        });
+        console.log("fData:", fData);
+        setFilteredData(fData);
+      });
   }, []);
 
   return (
