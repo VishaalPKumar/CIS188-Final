@@ -19,3 +19,7 @@ events:
   description: test!
   name: Test2
   time: '19:32'
+- date: 2022/04/30
+  description: works?
+  name: Adding new event
+  time: '22:57'
