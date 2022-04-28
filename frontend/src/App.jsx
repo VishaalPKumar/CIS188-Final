@@ -61,10 +61,11 @@ const App = () => {
   useEffect(() => {
     axios
       .get("/api/events")
-      .then((res) => console.log(res))
+      .then((res) => console.log(res.data))
       .then((res) => {
-        setData(res.events);
-        const fData = data.filter((item) => {
+        const events = res.data.events;
+        setData(res.data.events);
+        const fData = events.filter((item) => {
           const checkDate = new Date(item.date);
           return checkDate.toDateString() === date.toDateString();
         });
