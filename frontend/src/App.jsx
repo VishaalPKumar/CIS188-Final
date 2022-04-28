@@ -56,7 +56,7 @@ const App = () => {
     });
     console.log("fData:", fData);
     setFilteredData(fData);
-  }, [data, setData]);
+  }, [data, date]);
 
   useEffect(() => {
     axios.get("/api/events").then((res) => {
