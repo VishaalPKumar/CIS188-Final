@@ -1,13 +1,17 @@
 events:
-- date: 2022/04/15
-  description: Practice your soccer skills
-  name: Soccer Practice
-  time: '20:00'
-- date: 2022/04/15
-  description: Lunch with the team
-  name: Lunch
-  time: '12:00'
-- date: 2022/04/29
-  description: Demo
-  name: Demo
-  time: '11:57'
+  - date: 2022/04/15
+    description: Practice your soccer skills
+    name: Soccer Practice
+    time: "20:00"
+  - date: 2022/04/15
+    description: Lunch with the team
+    name: Lunch
+    time: "12:00"
+  - date: 2022/04/29
+    description: Demo
+    name: Demo
+    time: "11:57"
+  - date: 2022/04/29
+    description: Demo 2
+    name: Demo 2
+    time: "11:57"
