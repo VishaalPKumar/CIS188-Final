@@ -31,6 +31,7 @@ const App = () => {
     };
     // add event to data
     setData([...data, eventObj]);
+    console.log("posted data:", data);
     axios
       .post("/api/updateEvents", { events: data })
       .then((res) => {
