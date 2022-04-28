@@ -15,3 +15,7 @@ events:
   description: CIS 120
   name: Game Demos
   time: '14:00'
+- date: 2022/04/30
+  description: test test test
+  name: Test!
+  time: ''
