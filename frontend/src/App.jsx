@@ -5,6 +5,7 @@ import { useState, useEffect } from "react";
 import "react-calendar/dist/Calendar.css";
 import "./index.css";
 import axios from "axios";
+import Events from "../../data/events.yaml";
 
 const App = () => {
   const [date, setDate] = useState(new Date());
@@ -61,6 +62,7 @@ const App = () => {
   }, []);
 
   useEffect(() => {
+    console.log(Events);
     axios.post("/api/updateEvents", { events: data }).catch(alert);
   }, [data]);
 
