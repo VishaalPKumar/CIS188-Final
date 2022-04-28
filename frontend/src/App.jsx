@@ -5,7 +5,6 @@ import { useState, useEffect } from "react";
 import "react-calendar/dist/Calendar.css";
 import "./index.css";
 import axios from "axios";
-import Events from "../../data/events.yaml";
 
 const App = () => {
   const [date, setDate] = useState(new Date());
@@ -30,15 +29,19 @@ const App = () => {
       date: date,
       time: timeRef.current.value,
     };
-    console.log(eventObj);
     // add event to data
     setData([...data, eventObj]);
-
-    // clear form
-    nameRef.current.value = "";
-    descriptionRef.current.value = "";
-    dateRef.current.value = "";
-    timeRef.current.value = "";
+    axios
+      .post("/api/updateEvents", { events: data })
+      .then((res) => {
+        console.log(res);
+        // clear form
+        nameRef.current.value = "";
+        descriptionRef.current.value = "";
+        dateRef.current.value = "";
+        timeRef.current.value = "";
+      })
+      .catch(alert);
   }
 
   function onChange(date) {
@@ -60,11 +63,6 @@ const App = () => {
       .then((res) => console.log(res))
       .then((res) => setData(res.events));
   }, []);
-
-  useEffect(() => {
-    console.log(Events);
-    axios.post("/api/updateEvents", { events: data }).catch(alert);
-  }, [data]);
 
   return (
     <div className="row">
