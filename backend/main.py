@@ -75,7 +75,7 @@ def update_events(events: Events):
         return Response(content=e.response.content, status_code=e.response.status_code)
 
     data = {
-        "message": "Update events",
+        "message": "Update events #docs",
         "sha": metadata["sha"],
         "branch": "master",
         "committer": {"name": "Daniel Like", "email": "dlike230@gmail.com"},
