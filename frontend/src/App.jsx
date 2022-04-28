@@ -54,6 +54,7 @@ const App = () => {
       const checkDate = new Date(item.date);
       return checkDate.toDateString() === date.toDateString();
     });
+    console.log("fData:", fData);
     setFilteredData(fData);
   }, [data, setData]);
 
