@@ -59,19 +59,16 @@ const App = () => {
   }, [data, setData]);
 
   useEffect(() => {
-    axios
-      .get("/api/events")
-      .then((res) => console.log(res.data))
-      .then((res) => {
-        const events = res.data.events;
-        setData(res.data.events);
-        const fData = events.filter((item) => {
-          const checkDate = new Date(item.date);
-          return checkDate.toDateString() === date.toDateString();
-        });
-        console.log("fData:", fData);
-        setFilteredData(fData);
+    axios.get("/api/events").then((res) => {
+      const events = res.data.events;
+      setData(res.data.events);
+      const fData = events.filter((item) => {
+        const checkDate = new Date(item.date);
+        return checkDate.toDateString() === date.toDateString();
       });
+      console.log("fData:", fData);
+      setFilteredData(fData);
+    });
   }, []);
 
   return (
