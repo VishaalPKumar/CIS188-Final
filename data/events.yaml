@@ -1,5 +1,9 @@
 events:
-- date: 2022/04/27
-  description: event
-  name: Event
-  time: '20:49'
+  - date: 2022/04/27
+    description: event
+    name: Event
+    time: "20:49"
+  - date: 2022/04/27
+    description: local event
+    name: Local Event
+    time: "20:59"
