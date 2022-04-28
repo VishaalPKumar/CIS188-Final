@@ -55,7 +55,7 @@ const App = () => {
       return checkDate.toDateString() === date.toDateString();
     });
     setFilteredData(fData);
-  }, [date, data, setFilteredData]);
+  }, [data, setData]);
 
   useEffect(() => {
     axios
