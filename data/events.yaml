@@ -1,13 +1,13 @@
 events:
-- date: 2022/04/28
-  description: a
-  name: a
-  time: ''
-- date: 2022/04/29
-  description: a
-  name: a
-  time: '16:46'
-- date: 2022/04/29
-  description: works?
-  name: works?
-  time: '17:52'
+  - date: 2022/04/28
+    description: Chelsea vs Manchester United
+    name: English Premier League
+    time: "14:45"
+  - date: 2022/04/29
+    description: Project Demonstration
+    name: CIS 188
+    time: "13:30"
+  - date: 2022/04/30
+    description: Leeds United vs Manchester City
+    name: English Premier League
+    time: "14:45"
