@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import { useState, useEffect } from "react";
 import "react-calendar/dist/Calendar.css";
 import "./index.css";
-import Data from "./data.json";
 import axios from "axios";
 
 const App = () => {
@@ -13,7 +12,7 @@ const App = () => {
   const descriptionRef = React.createRef();
   const dateRef = React.createRef();
   const timeRef = React.createRef();
-  const [data, setData] = useState(Data);
+  const [data, setData] = useState([]);
   const fData = Data.filter((item) => {
     const checkDate = new Date(item.date);
     return checkDate.toDateString() === date.toDateString();
