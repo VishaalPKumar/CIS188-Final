@@ -30,10 +30,11 @@ const App = () => {
       time: timeRef.current.value,
     };
     // add event to data
-    setData([...data, eventObj]);
-    console.log("posted data:", data);
+    const newData = [...data, eventObj];
+    setData(newData);
+    console.log("POSTED data:", newData);
     axios
-      .post("/api/updateEvents", { events: data })
+      .post("/api/updateEvents", { events: newData })
       .then((res) => {
         console.log(res);
       })
