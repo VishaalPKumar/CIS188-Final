@@ -13,11 +13,7 @@ const App = () => {
   const dateRef = React.createRef();
   const timeRef = React.createRef();
   const [data, setData] = useState([]);
-  const fData = Data.filter((item) => {
-    const checkDate = new Date(item.date);
-    return checkDate.toDateString() === date.toDateString();
-  });
-  const [filteredData, setFilteredData] = useState(fData);
+  const [filteredData, setFilteredData] = useState([]);
 
   function handleSubmit(event) {
     event.preventDefault();
