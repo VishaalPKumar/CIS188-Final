@@ -35,13 +35,13 @@ const App = () => {
       .post("/api/updateEvents", { events: data })
       .then((res) => {
         console.log(res);
-        // clear form
-        nameRef.current.value = "";
-        descriptionRef.current.value = "";
-        dateRef.current.value = "";
-        timeRef.current.value = "";
       })
       .catch(alert);
+    // clear form
+    nameRef.current.value = "";
+    descriptionRef.current.value = "";
+    dateRef.current.value = "";
+    timeRef.current.value = "";
   }
 
   function onChange(date) {
