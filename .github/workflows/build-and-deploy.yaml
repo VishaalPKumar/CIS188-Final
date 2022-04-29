@@ -33,7 +33,7 @@ jobs:
           push: ${{ github.ref == 'refs/heads/master' }}
           tags: ghcr.io/vishaalpkumar/cis188-final/final-project-backend-public:${{ github.sha }}
           build-args: |
-            GITHUB_TOKEN=${{ secrets.GH_TOKEN }}
+            GITHUB_TOKEN=${{ secrets.GITHUB_TOKEN }}
 
   deploy:
     name: Deploy latest version of code
