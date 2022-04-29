@@ -23,3 +23,7 @@ events:
   description: works?
   name: Adding new event
   time: '22:57'
+- date: 2022/04/28
+  description: crazy
+  name: Wow!
+  time: '20:36'
