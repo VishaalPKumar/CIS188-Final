@@ -4,7 +4,6 @@ import Form from "react-bootstrap/Form";
 import { useState, useEffect } from "react";
 import "react-calendar/dist/Calendar.css";
 import "./index.css";
-import Data from "./data.json";
 import axios from "axios";
 
 const App = () => {
@@ -13,12 +12,8 @@ const App = () => {
   const descriptionRef = React.createRef();
   const dateRef = React.createRef();
   const timeRef = React.createRef();
-  const [data, setData] = useState(Data);
-  const fData = Data.filter((item) => {
-    const checkDate = new Date(item.date);
-    return checkDate.toDateString() === date.toDateString();
-  });
-  const [filteredData, setFilteredData] = useState(fData);
+  const [data, setData] = useState([]);
+  const [filteredData, setFilteredData] = useState([]);
 
   function handleSubmit(event) {
     event.preventDefault();
@@ -34,10 +29,16 @@ const App = () => {
       date: date,
       time: timeRef.current.value,
     };
-    console.log(eventObj);
     // add event to data
-    setData([...data, eventObj]);
-
+    const newData = [...data, eventObj];
+    setData(newData);
+    console.log("POSTED data:", newData);
+    axios
+      .post("/api/updateEvents", { events: newData })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(alert);
     // clear form
     nameRef.current.value = "";
     descriptionRef.current.value = "";
@@ -55,19 +56,23 @@ const App = () => {
       const checkDate = new Date(item.date);
       return checkDate.toDateString() === date.toDateString();
     });
+    console.log("fData:", fData);
     setFilteredData(fData);
-  }, [date, data, setFilteredData]);
+  }, [data, date]);
 
   useEffect(() => {
-    axios
-      .get("/api/events")
-      .then((res) => console.log(res))
-      .then((res) => setData(res.events));
+    axios.get("/api/events").then((res) => {
+      const events = res.data.events;
+      setData(res.data.events);
+      const fData = events.filter((item) => {
+        console.log("item.date:", item.date);
+        const checkDate = new Date(item.date);
+        return checkDate.toDateString() === date.toDateString();
+      });
+      console.log("fData:", fData);
+      setFilteredData(fData);
+    });
   }, []);
-
-  useEffect(() => {
-    axios.post("/api/updateEvents", { events: data }).catch(alert);
-  }, [data]);
 
   return (
     <div className="row">
