@@ -77,7 +77,7 @@ def update_events(events: Events):
         "message": "Update events #docs",
         "sha": metadata["sha"],
         "branch": "master",
-        "committer": {"name": COMMITTER_NAME, "email": COMMITTER_EMAIL},
+        "committer": {"name": "Vishaal Kumar", "email": "vishaalk@seas.upenn.edu"},
         "content": base64.b64encode(str.encode(new_yaml)).decode(),
     }
 
