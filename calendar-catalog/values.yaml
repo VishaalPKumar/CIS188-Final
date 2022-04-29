@@ -6,17 +6,17 @@ application:
   # This is bad practice! In the real world, these secrets should be hidden somehow,
   # likely through a secret manager like Vault.
   ingress:
-    host: dlike.cis188.org
+    host: vishaalk.cis188.org
     path: "/"
-    secretName: "dlike-cis188-org-tls"
+    secretName: "vishaalk-cis188-org-tls"
 
 fastapi:
-  image: ghcr.io/dlike230/cis188-project/final-project-backend-public
+  image: ghcr.io/vishaalpkumar/cis188-final/final-project-backend-public
   tag: v2
-  events_url: https://api.github.com/repos/dlike230/CIS188-Project/contents/data/events.yaml
-  committer_name: "Daniel Like"
-  committer_email: "dlike230@gmail.com"
+  events_url: https://api.github.com/repos/vishaalpkumar/CIS188-Final/contents/data/events.yaml
+  committer_name: "Vishaal Kumar"
+  committer_email: "vishaalk@seas.upenn.edu"
 
 react:
-  image: ghcr.io/dlike230/cis188-project/final-project-frontend-public
+  image: ghcr.io/vishaalpkumar/cis188-final/final-project-frontend-public
   tag: v2

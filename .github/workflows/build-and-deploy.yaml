@@ -24,14 +24,14 @@ jobs:
         with:
           context: "./frontend"
           push: ${{ github.ref == 'refs/heads/master' }}
-          tags: ghcr.io/dlike230/cis188-project/final-project-frontend-public:${{ github.sha }}
+          tags: ghcr.io/vishaalpkumar/cis188-final/final-project-frontend-public:${{ github.sha }}
 
       - name: Build and push backend
         uses: docker/build-push-action@v2
         with:
           context: "./backend"
           push: ${{ github.ref == 'refs/heads/master' }}
-          tags: ghcr.io/dlike230/cis188-project/final-project-backend-public:${{ github.sha }}
+          tags: ghcr.io/vishaalpkumar/cis188-final/final-project-backend-public:${{ github.sha }}
           build-args: |
             GITHUB_TOKEN=${{ secrets.GH_TOKEN }}
 
@@ -59,10 +59,10 @@ jobs:
           aws-region: us-east-1
 
       - name: configure kube credentials on AWS
-        run: aws eks --region us-east-1 update-kubeconfig --name cis188 --role-arn arn:aws:iam::474844133309:role/dlike --alias cis188
+        run: aws eks --region us-east-1 update-kubeconfig --name cis188 --role-arn arn:aws:iam::474844133309:role/vishaalk --alias cis188
 
       - name: Set namespace
-        run: kubectl config set-context --current --namespace=dlike
+        run: kubectl config set-context --current --namespace=vishaalk
 
       - name: Helm
         run: |
