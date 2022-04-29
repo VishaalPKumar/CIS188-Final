@@ -13,10 +13,10 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-EVENTS_URL = (
-    "https://api.github.com/repos/dlike230/CIS188-Project/contents/data/events.yaml"
-)
+EVENTS_URL = os.getenv("EVENTS_URL")
 TOKEN = os.getenv("GITHUB_TOKEN")
+COMMITTER_NAME = os.getenv("COMMITTER_NAME")
+COMMITTER_EMAIL = os.getenv("COMMITTER_EMAIL")
 
 app.add_middleware(
     CORSMiddleware,
@@ -77,7 +77,7 @@ def update_events(events: Events):
         "message": "Update events #docs",
         "sha": metadata["sha"],
         "branch": "master",
-        "committer": {"name": "Daniel Like", "email": "dlike230@gmail.com"},
+        "committer": {"name": COMMITTER_NAME, "email": COMMITTER_EMAIL},
         "content": base64.b64encode(str.encode(new_yaml)).decode(),
     }
 

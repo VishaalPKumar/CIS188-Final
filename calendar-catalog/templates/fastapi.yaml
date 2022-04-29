@@ -31,6 +31,13 @@ spec:
       containers:
         - name: fastapibackend
           image: "{{ .Values.fastapi.image }}:{{ .Values.fastapi.tag }}"
+          env:
+            - name: COMMITTER_NAME
+              value: "{{ .Values.fastapi.committer_name }}"
+            - name: COMMITTER_EMAIL
+              value: "{{ .Values.fastapi.committer_email }}"
+            - name: EVENTS_URL
+              value: "{{ .Values.fastapi.events_url }}"
           ports:
             - containerPort: 8000
 
