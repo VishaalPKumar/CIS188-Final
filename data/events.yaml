@@ -19,3 +19,7 @@ events:
   description: test
   name: test
   time: '22:48'
+- date: 2022/04/08
+  description: what an amazing day
+  name: wow
+  time: '22:17'
