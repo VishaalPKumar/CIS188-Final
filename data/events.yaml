@@ -1,41 +1,17 @@
 events:
-- date: 2022/04/28
-  description: Chelsea vs Manchester United
-  name: English Premier League
-  time: '14:45'
-- date: 2022/04/29
-  description: Project Demonstration
-  name: CIS 188
-  time: '13:30'
-- date: 2022/04/30
-  description: Leeds United vs Manchester City
-  name: English Premier League
-  time: '14:45'
-- date: 2022/04/29
-  description: CIS 120
-  name: Game Demos
-  time: '14:00'
-- date: 2022/04/28
-  description: test!
-  name: Test2
-  time: '19:32'
-- date: 2022/04/30
-  description: works?
-  name: Adding new event
-  time: '22:57'
-- date: 2022/04/28
-  description: asdfsa
-  name: testadas
-  time: ''
-- date: 2022/04/28
-  description: ASDFASFDSA
-  name: aekjEU
-  time: '21:01'
-- date: 2022/04/28
-  description: food
-  name: Eat
-  time: '21:02'
-- date: 2022/05/01
-  description: mad banter
-  name: May Fools
-  time: '23:03'
+  - date: 2022/04/28
+    description: Chelsea vs Manchester United
+    name: English Premier League
+    time: "14:45"
+  - date: 2022/04/29
+    description: Project Demonstration
+    name: CIS 188
+    time: "13:30"
+  - date: 2022/04/30
+    description: Leeds United vs Manchester City
+    name: English Premier League
+    time: "14:45"
+  - date: 2022/04/29
+    description: CIS 120
+    name: Game Demos
+    time: "14:00"
