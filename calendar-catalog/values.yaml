@@ -1,0 +1,19 @@
+# Default values for bender-catalog.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+application:
+  # This is bad practice! In the real world, these secrets should be hidden somehow,
+  # likely through a secret manager like Vault.
+  ingress:
+    host: dlike.cis188.org
+    path: "/"
+    secretName: "dlike-cis188-org-tls"
+
+fastapi:
+  image: ghcr.io/dlike230/cis188-project/final-project-backend-public
+  tag: v2
+
+react:
+  image: ghcr.io/dlike230/cis188-project/final-project-frontend-public
+  tag: v2

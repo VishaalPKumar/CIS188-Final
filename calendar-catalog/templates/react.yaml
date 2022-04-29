@@ -1,0 +1,30 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: {{ .Release.Name }}-web-app
+spec:
+  selector:
+    app: {{ .Release.Name }}-web-app
+  ports:
+    - port: 3000
+      targetPort: 3000
+
+---
+kind: Deployment
+apiVersion: apps/v1
+metadata:
+  name: {{ .Release.Name }}-web-app
+spec:
+  selector:
+    matchLabels:
+      app: {{ .Release.Name }}-web-app
+  template:
+    metadata:
+      labels:
+        app: {{ .Release.Name }}-web-app
+    spec:
+      containers:
+        - name: web-app
+          image: "{{ .Values.react.image }}:{{ .Values.react.tag }}"
+          ports:
+            - containerPort: 3000

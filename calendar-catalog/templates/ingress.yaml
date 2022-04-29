@@ -1,0 +1,29 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: {{ .Release.Name }}-api-ingress
+  annotations:
+    traefik.ingress.kubernetes.io/rule-type: PathPrefixStrip
+spec:
+  rules:
+    - host: {{ .Values.application.ingress.host | quote }}
+      http:
+        paths:
+          - path: "/"
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Release.Name }}-web-app
+                port:
+                  number: 3000
+          - path: "/api"
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Release.Name }}-fastapi
+                port:
+                  number: 8000
+  tls:
+    - hosts:
+        - {{ .Values.application.ingress.host | quote }}
+      secretName: {{ .Values.application.ingress.secretName }}

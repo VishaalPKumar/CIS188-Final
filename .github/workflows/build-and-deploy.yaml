@@ -37,7 +37,7 @@ jobs:
 
   deploy:
     name: Deploy latest version of code
-    if: github.ref == 'refs/heads/master'
+    # if: github.ref == 'refs/heads/master'
     needs: build
 
     runs-on: ubuntu-latest
@@ -64,11 +64,8 @@ jobs:
       - name: Set namespace
         run: kubectl config set-context --current --namespace=dlike
 
-      - name: Run kubectl apply with substituted vars
+      - name: Helm
         run: |
-          export TAG=${{ github.sha }}
-          cat ./k8s/react.yaml | envsubst > ./k8s/react2.yaml
-          rm ./k8s/react.yaml
-          cat ./k8s/fastapi.yaml | envsubst > ./k8s/fastapi2.yaml
-          rm ./k8s/fastapi.yaml
-          kubectl apply -f ./k8s/
+          helm upgrade --install vishaalk ./calendar-catalog \
+          --set react.tag=${{ github.sha }} \
+          --set fastapi.tag=${{ github.sha }}
