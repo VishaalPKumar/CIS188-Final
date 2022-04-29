@@ -35,3 +35,7 @@ events:
   description: food
   name: Eat
   time: '21:02'
+- date: 2022/05/01
+  description: mad banter
+  name: May Fools
+  time: '23:03'
