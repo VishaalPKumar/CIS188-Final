@@ -49,8 +49,7 @@ def get_events():
         metadata = get_metadata()
     except MetadataFetchException as e:
         return Response(content=e.response.content, status_code=e.response.status_code)
-    download_url = metadata["download_url"]
-    return yaml.safe_load(requests.get(download_url).content)
+    return yaml.safe_load(base64.b64decode(metadata.content))
 
 
 class Event(BaseModel):
