@@ -1,17 +1,21 @@
 events:
-  - date: 2022/04/28
-    description: Chelsea vs Manchester United
-    name: English Premier League
-    time: "14:45"
-  - date: 2022/04/29
-    description: Project Demonstration
-    name: CIS 188
-    time: "13:30"
-  - date: 2022/04/30
-    description: Leeds United vs Manchester City
-    name: English Premier League
-    time: "14:45"
-  - date: 2022/04/29
-    description: CIS 120
-    name: Game Demos
-    time: "14:00"
+- date: 2022/04/28
+  description: Chelsea vs Manchester United
+  name: English Premier League
+  time: '14:45'
+- date: 2022/04/29
+  description: Project Demonstration
+  name: CIS 188
+  time: '13:30'
+- date: 2022/04/30
+  description: Leeds United vs Manchester City
+  name: English Premier League
+  time: '14:45'
+- date: 2022/04/29
+  description: CIS 120
+  name: Game Demos
+  time: '14:00'
+- date: 2022/04/30
+  description: Destroying Legs
+  name: Leg Day
+  time: 08:00
